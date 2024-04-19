@@ -2,6 +2,7 @@ import sys
 
 count = 0
 sys.set_int_max_str_digits(50000)
+
 def fibonacci_generator():
     a = 1
     b = 1
@@ -9,6 +10,7 @@ def fibonacci_generator():
         yield a
         a = b
         b = a + b
+
 
 for num in fibonacci_generator():
     if count == 5:
@@ -20,5 +22,4 @@ for num in fibonacci_generator():
     if count == 100000:
         print(f'Стотысячное число:{num}')
         break
-
     count += 1
