@@ -38,6 +38,7 @@ school_book1 = SchoolBook("Алгебра", "Иванов", 200, "111", 'Мат�
 school_book2 = SchoolBook("Алгебра", "Петров", 300, "222", 'Математика', '10', True, False)
 
 school_books = [school_book1, school_book2]
+
 for book in school_books:
     if book.reserved:
         print(f"Название: {book.title}, Автор: {book.author}, страниц: {book.num_pages}, предмет: {book.subject}, "
@@ -45,3 +46,5 @@ for book in school_books:
     else:
         print(f"Название: {book.title}, Автор: {book.author}, страниц: {book.num_pages}, предмет: {book.subject}, "
               f"класс: {book.school_classroom}")
+
+
