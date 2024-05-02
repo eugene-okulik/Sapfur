@@ -18,7 +18,6 @@ class Lotus(Flower):
         super().__init__("Lotus", color, freshness, stem_length, price, lifespan)
 
 
-
 class Bouquet:
     def __init__(self):
         self.flowers = []
@@ -33,11 +32,8 @@ class Bouquet:
     def sort_flowers(self, key):
         self.flowers.sort(key=lambda x: getattr(x, key))
 
-
-
     def search_flowers_by_lifespan(self, lifespan):
         return [flower for flower in self.flowers if flower.lifespan == lifespan]
-
 
 
 rose1 = Rose("Red", 90, 30, 5.0, 7)
