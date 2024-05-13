@@ -1,0 +1,57 @@
+INSERT INTO students (name, second_name) VALUES ('Bober','Bobrov')
+
+INSERT INTO books (title,taken_by_student_id) VALUES ('Book for Belov1', 262)
+INSERT INTO books (title,taken_by_student_id) VALUES ('Book for Belov2', 262)
+
+INSERT INTO `groups` (title, start_date, end_date) VALUES ('Bobr and Belov', 'Apr 23', 'Sept 23')
+
+UPDATE students SET group_id = 178 WHERE id = 262
+
+INSERT INTO subjets (title) VALUES ('Mathematics')
+INSERT INTO subjets (title) VALUES ('Python development')
+
+INSERT INTO lessons (title, subject_id) VALUES ('lesson_1_math',276)
+INSERT INTO lessons (title, subject_id) VALUES ('lesson_2_math',276)
+INSERT INTO lessons (title, subject_id) VALUES ('lesson_1_py',277)
+INSERT INTO lessons (title, subject_id) VALUES ('lesson_2_py',277)
+
+INSERT INTO marks  (value , lesson_id, student_id) VALUES (4, 631, 262)
+INSERT INTO marks  (value , lesson_id, student_id) VALUES (5, 632, 262)
+
+INSERT INTO marks  (value , lesson_id, student_id) VALUES (5, 629, 262)
+INSERT INTO marks  (value , lesson_id, student_id) VALUES (4, 630, 262)
+
+SELECT * FROM students WHERE name = 'Bober'
+SELECT * FROM lessons  WHERE subject_id  = '276'
+
+Все оценки студента
+SELECT s.name, s.second_name, m.value
+FROM students s
+JOIN marks m
+ON s.id = m.student_id
+WHERE s.id = 262
+
+Все книги, которые находятся у студента
+SELECT s.name, s.second_name, b.title
+FROM students s
+JOIN books b
+ON s.id = b.taken_by_student_id
+WHERE s.id = 262
+
+Для вашего студента выведите всё, что о нем есть в базе: группа, книги, оценки с названиями занятий и предметов
+SELECT s.name AS student_name, s.second_name AS student_surname,
+	b.title AS book_title, g.title AS group_title,
+	g.start_date AS start_course, g.end_date AS end_course,
+	s2.title AS item_title, l.title AS lesson_title, m.value AS mark
+FROM students s
+JOIN books b
+ON s.id = b.taken_by_student_id
+JOIN `groups` g
+ON s.group_id = g.id
+JOIN marks m
+ON s.id = m.student_id
+JOIN lessons l
+ON m.lesson_id = l.id
+JOIN subjets s2
+ON l.subject_id  = s2.id
+WHERE s.id = 262
