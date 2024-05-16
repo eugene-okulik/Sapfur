@@ -1,7 +1,7 @@
 import mysql.connector as mysql
 
 db = mysql.connect(
-    user='st-onl',
+   user='st-onl',
     passwd='AVNS_tegPDkI5BlB2lW5eASC',
     host='db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com',
     port=25060,
