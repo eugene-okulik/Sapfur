@@ -39,7 +39,7 @@ def start_end_testing():
 
 
 @pytest.mark.critical
-@pytest.mark.parametrize('prices', [1849.99, '1849.99', None])
+@pytest.mark.parametrize('prices', [1849.99, '   ', '$%#%$@#&'])
 def test_create_a_post(start_end_testing, start_end_test, prices):
     body = {
         "name": "Apple iphone 14 pro",
@@ -52,10 +52,12 @@ def test_create_a_post(start_end_testing, start_end_test, prices):
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.post('https://api.restful-api.dev/objects', json=body, headers=headers)
-    new_post_id = response.json()['id']
+    post_id = response.json()['id']
 
     assert response.status_code == 200, 'Status code is not 200'
     assert response.json()['data']['prices'] == prices, 'Price is not correct'
+
+    requests.get(f'https://api.restful-api.dev/objects/{post_id}')
 
 
 @pytest.mark.medium
