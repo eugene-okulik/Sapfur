@@ -76,3 +76,4 @@ def test_delete_an_object(delete_object_endpoint, get_object_endpoint, new_post_
     get_object_endpoint.check_that_object_was_deleted()
     get_object_endpoint.check_that_status_is_404()
 
+
